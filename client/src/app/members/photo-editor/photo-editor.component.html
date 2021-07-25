@@ -3,16 +3,16 @@
         <img src="{{photo.url}}" alt="{{photo.url}}" class="img-thumbnail p-1">
         <div class="text-center">
             <button 
-            [disabled]="photo.isMain"
-            (click)="setMainPhoto(photo)"
-            [ngClass]='photo.isMain ? "btn-success active" : "btn-outline-success"'
-            class="btn btn-sm"
+                [disabled]="photo.isMain"
+                (click)="setMainPhoto(photo)"
+                [ngClass]='photo.isMain ? "btn-success active" : "btn-outline-success"'
+                class="btn btn-sm"
             >Main</button>
             <button 
                 [disabled]="photo.isMain"
                 (click)="deletePhoto(photo.id)"
                 class="btn btn-sm btn-danger"
-                ><i class="fa fa-trash"></i></button>
+            ><i class="fa fa-trash"></i></button>
         </div>
     </div>
 </div>
@@ -31,7 +31,7 @@
              <i class="fa fa-upload fa-3x"></i>
             Drop photos here
         </div>
-        
+
         Multiple
         <input type="file" ng2FileSelect [uploader]="uploader" multiple  /><br/>
 
@@ -52,10 +52,10 @@
             </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let item of uploader.queue">
-                    <td><strong>{{ item?.file?.name }}</strong></td>
-                    <td *ngIf="uploader.options.isHTML5" nowrap>{{ item?.file?.size/1024/1024 | number:'.2' }} MB</td>
-                </tr>
+            <tr *ngFor="let item of uploader.queue">
+                <td><strong>{{ item?.file?.name }}</strong></td>
+                <td *ngIf="uploader.options.isHTML5" nowrap>{{ item?.file?.size/1024/1024 | number:'.2' }} MB</td>
+            </tr>
             </tbody>
         </table>
 
@@ -67,7 +67,7 @@
                 </div>
             </div>
             <button type="button" class="btn btn-success btn-s"
-            (click)="uploader.uploadAll()" [disabled]="!uploader.getNotUploadedItems().length">
+                    (click)="uploader.uploadAll()" [disabled]="!uploader.getNotUploadedItems().length">
                 <span class="fa fa-upload"></span> Upload all
             </button>
             <button type="button" class="btn btn-warning btn-s"

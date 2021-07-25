@@ -1,10 +1,9 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-
-import { ReplaySubject } from 'rxjs';
-import { map } from 'rxjs/operators';
-import { environment } from 'src/environments/environment';
+import { HttpClient } from '@angular/common/http';
+import {map} from 'rxjs/operators';
 import { User } from '../_models/user';
+import { ReplaySubject } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -16,22 +15,22 @@ export class AccountService {
 
   constructor(private http: HttpClient) { }
 
-  login(model: any){
+  login(model: any) {
     return this.http.post(this.baseUrl + 'account/login', model).pipe(
       map((response: User) => {
         const user = response;
-        if(user){
+        if (user) {
           this.setCurrentUser(user);
         }
       })
     )
   }
 
-  register(model: any){
+  register(model: any) {
     return this.http.post(this.baseUrl + 'account/register', model).pipe(
       map((user: User) => {
-        if(user){
-          this.setCurrentUser(user);
+        if (user) {
+         this.setCurrentUser(user);
         }
       })
     )
@@ -42,7 +41,7 @@ export class AccountService {
     this.currentUserSource.next(user);
   }
 
-  logout(){
+  logout() {
     localStorage.removeItem('user');
     this.currentUserSource.next(null);
   }
